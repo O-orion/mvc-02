@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./includes/heade.ejs') %>
+</head>
+<body>
+    <%- include('./includes/menu.ejs') %>
+        <form action="">
+            <input type="hidden" name="_csrf" value="<%=csrfToken %>">
+            <label for="">Nome: <input type="text" placeholder="nome"></label>
+            <button>Enviar</button>
+        </form>
+    <%- include('./includes/footer.ejs')%>
+</body>
+</html>

@@ -1,0 +1,42 @@
+    JESUS CRISTO É O SENHOR !!!
+
+Instalar as seguintes biblíotecas
+npm i helmet
+npm i csurf
+
+
+const helmet = require('helmet')
+
+
+app.use(helmet) // dizendo pro express usar o helmet
+
+CSRF 
+
+csrf = require('csurf')
+
+// antes das rotas  e do middleware global
+
+app.use(csurf);
+
+// precisa cria dos middlware, um para injetar código csrf e outro para verificar se ele é valido!
+
+
+cria dos middleware
+
+exports.checksCsrfError = (err, req, res, next) => {
+    // verificando se o token é invalido ou inexistente
+    if(err && err.code === 'EBADCSRFTOKEN') {
+        return res.send('BAD CSRF.)
+    }
+}
+
+exports.csrfMiddleware = (req, res, next) => {
+    res.locals.csrfToken = req.csrfToken();
+    next();
+}
+
+
+dentro do form
+adicionar
+
+<input type="hidden" name="_csrf" value="<%= csrfToken %>"

@@ -20,7 +20,9 @@ const flash = require('connect-flash');
 
 const Routes = require('./routes/Routes');
 const path = require('path')
-const middleWare = require('./src/middlewares/middleware') // chamando o middlware
+const helmet = require('helmet')
+const csrf = require('csurf')
+const { middleWare, checksCsfError, csrfMiddleware } = require('./src/middlewares/middleware') // chamando o middlware
 
 
 app.use( express.urlencoded( { extended: true } ) );
@@ -42,7 +44,11 @@ app.use(flash());
 app.set('views', path.resolve(__dirname, 'src', 'views')) // setando as views
 app.set('view engine', 'ejs') // definindo a engine da view que queremos, existem várias
 
+app.use(helmet())
+app.use(csrf())
 app.use(middleWare)
+app.use(checksCsfError)
+app.use(csrfMiddleware)
 app.use(Routes);
 
 //  capturando o valor emitido é em seguida iniciando o app
