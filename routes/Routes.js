@@ -9,6 +9,7 @@ function meuMiddleware(req, res, next) {
 
 // Controllers
 const homeController = require('../src/controllers/homeController')
+const ejsController = require('../src/controllers/ejsController')
 
 route.get('/', (req, res) => {
     res.send('JESUS CRISTO TE AMA')
@@ -27,5 +28,5 @@ route.get('/teste', (req, res) => {
 })
 
 route.get('/home', meuMiddleware, homeController.paginaInicial )
-
+route.get('/ej', ejsController.paginaEJS)
 module.exports = route;

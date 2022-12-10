@@ -1,15 +1,36 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Boilerplate</title>
-</head>
-<body>
-    
 
+<%- include('./includes/heade')%> <!--Importando heade e criando includes-->
+
+<body>
+    <%- include('./includes/menu.ejs') %>
+    <section>
+        <h1>
+            <%  if(typeof titulo !== 'undefined') { %> <!-- IF no EJS -->
+
+                <%= titulo %>
+
+            <% } else {%>
+                    <h1>Página não contém titúlo</h1>
+            <% } %>
+
+            <%= titulo  %> <!-- Não escapa os caracteres -->
+            <%- titulo %> <!-- escapa os caracteres-->
+
+            <!-- for com EJS-->
+
+            <h2>
+                <% numeros.forEach(num => { %>
+                    <%= num %> <br>
+                <% }); %>
+            </h2>
+
+        </h1>
+    </section>
+
+    <%-  include('./includes/footer') %>
     <!-- Chamando o arquivo bundle, que foi traduzido do arquivo js original, utilizando webpack e babel-->
-    <script src="./assets/js/bundle.js"></script>
+    
 </body>
 </html>
