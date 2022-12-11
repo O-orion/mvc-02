@@ -4,6 +4,7 @@
     <%- include('./includes/heade.ejs') %>
 </head>
 <body>
+    <h1><%= csrfToken %></h1>
     <%- include('./includes/menu.ejs') %>
         <form action="">
             <input type="hidden" name="_csrf" value="<%=csrfToken %>">
